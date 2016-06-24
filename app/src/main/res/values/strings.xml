@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">System Air Care</string>
+
+    <string name="title_room_1">ROOM1</string>
+    <string name="title_room_2">ROOM2</string>
+    <string name="title_room_3">ROOM3</string>
+
+    <string name="title_sensor1">온도</string>
+    <string name="title_sensor2">습도</string>
+    <string name="title_sensor3">CO2</string>
+
+</resources>
