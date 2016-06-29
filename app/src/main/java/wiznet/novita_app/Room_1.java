@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,7 +48,8 @@ public class Room_1 extends Fragment implements View.OnClickListener{
     String device_off_msg = "8801010000000000000055";
 
     private Handler autoHandler = null;
-    private String ip = "192.168.1.101";
+   // private String ip = "192.168.1.101";
+   private String ip = "222.98.173.194";
     private int port = 5001;
 
 //    10초동안 데이터 수신이 없을 시 Disconnect로 간주하기 위한 Timer
@@ -59,7 +61,7 @@ public class Room_1 extends Fragment implements View.OnClickListener{
     TextView sensor1;
     TextView sensor2;
     TextView sensor3;
-    TextView room1_iscon;
+    ImageView room1_iscon;
 
     LinearLayout room1_title;
 
@@ -82,7 +84,7 @@ public class Room_1 extends Fragment implements View.OnClickListener{
         sensor2 = (TextView) view.findViewById(R.id.room1_sensor2);
         sensor3 = (TextView) view.findViewById(R.id.room1_sensor3);
         room1_title = (LinearLayout) view.findViewById(R.id.room1_title);
-        room1_iscon = (TextView) view.findViewById(R.id.iscon_room1);
+        room1_iscon = (ImageView) view.findViewById(R.id.iscon_room1);
 
         updateButtonState(button_power, false);
         updateButtonState(button_auto, false);
@@ -101,8 +103,9 @@ public class Room_1 extends Fragment implements View.OnClickListener{
         }
         countDownTimer = new CountDownTimer(g_wait_time, 1000) {
             @Override
-            public void onFinish() {
-                room1_iscon.setText("Disconnected");
+            public void onFinish()
+            {
+                room1_iscon.setImageResource(R.drawable.disconnect);
             }
             @Override
             public void onTick(long millisUntilFinished) {
@@ -301,7 +304,7 @@ public class Room_1 extends Fragment implements View.OnClickListener{
             if( readmsg != null )
             {
                 Log.d(TAG, "showUpdate");
-                room1_iscon.setText("Connected");
+                room1_iscon.setImageResource(R.drawable.connect);
 
                 int color = 0;
                 int pm25 = ((readmsg[5] & 0xFF) << 8) + ((readmsg[6] & 0xFF) << 0);   // byte -> int

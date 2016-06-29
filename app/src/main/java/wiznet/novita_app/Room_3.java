@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,7 +60,7 @@ public class Room_3 extends Fragment implements View.OnClickListener{
 
     TextView sensor2;
     TextView sensor3;
-    TextView room3_iscon;
+    ImageView room3_iscon;
 
     LinearLayout room3_title;
 
@@ -82,7 +83,7 @@ public class Room_3 extends Fragment implements View.OnClickListener{
         sensor2 = (TextView) view.findViewById(R.id.room3_sensor2);
         sensor3 = (TextView) view.findViewById(R.id.room3_sensor3);
         room3_title = (LinearLayout) view.findViewById(R.id.room3_title);
-        room3_iscon = (TextView) view.findViewById(R.id.iscon_room3);
+        room3_iscon = (ImageView) view.findViewById(R.id.iscon_room3);
 
         updateButtonState(button_power, false);
         updateButtonState(button_auto, false);
@@ -102,7 +103,8 @@ public class Room_3 extends Fragment implements View.OnClickListener{
         countDownTimer = new CountDownTimer(g_wait_time, 1000) {
             @Override
             public void onFinish() {
-                room3_iscon.setText("Disconnected");
+
+                room3_iscon.setImageResource(R.drawable.disconnect);
             }
             @Override
             public void onTick(long millisUntilFinished) {
@@ -301,7 +303,7 @@ public class Room_3 extends Fragment implements View.OnClickListener{
             if( readmsg != null )
             {
                 Log.d(TAG, "showUpdate");
-                room3_iscon.setText("Connected");
+                room3_iscon.setImageResource(R.drawable.connect);
 
                 int color = 0;
                 int pm25 = ((readmsg[5] & 0xFF) << 8) + (readmsg[6] & 0xFF);   // byte -> int

@@ -17,9 +17,16 @@
         <item name="android:background">@color/app_color_7</item>
     </style>
 
+    <!-- title bar style-->
     <style name="novita_title" parent="android:Theme">
         <item name="android:windowTitleSize">35dp</item>
         <item name="android:windowTitleBackgroundStyle">@style/CustomWindowTitleBackground</item>
+    </style>
+
+
+    <!-- Splash style-->
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/main_splash</item>
     </style>
 
 
