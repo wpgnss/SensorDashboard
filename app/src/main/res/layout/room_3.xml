@@ -15,7 +15,7 @@
         android:id="@+id/room3_title"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:background="@color/app_color_1">
+        android:background="@color/app_color_8">
 
         <LinearLayout
             android:orientation="vertical"
@@ -87,7 +87,7 @@
             android:layout_weight="0.50"
             android:layout_gravity="center|left"
             android:gravity="center"
-            android:text="OFF"
+            android:text="@string/title_powerbutton_off"
             android:layout_margin="5dp"
             android:textColor="#b52774"
             android:textSize="12dp" />
@@ -101,8 +101,8 @@
             android:layout_weight="0.50"
             android:layout_gravity="center|right"
             android:gravity="center"
-            android:textOff="AUTO"
-            android:textOn="AUTO"
+            android:textOff="@string/title_autobutton"
+            android:textOn="@string/title_autobutton"
             android:layout_margin="5dp"
             android:textColor="#b52774"
             android:textSize="12dp" />
@@ -140,19 +140,38 @@
                 android:layout_marginTop="3dp"
                 android:textSize="12dp" />
 
-            <TextView
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="0"
-                android:id="@+id/room3_sensor2"
-                android:textAlignment="center"
-                android:layout_gravity="center"
-                android:layout_weight="0.3"
-                android:gravity="center"
-                android:textSize="13dp"
-                android:textStyle="bold"
-                android:textColor="@color/app_color_font"
-                android:layout_marginBottom="3dp" />
+                android:layout_weight="0.5"
+                android:weightSum="1" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="0"
+                    android:id="@+id/room3_sensor2"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.7"
+                    android:gravity="center"
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/app_color_font"
+                    android:layout_marginBottom="3dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="ppb"
+                    android:id="@+id/textView16"
+                    android:textSize="10dp"
+                    android:layout_weight="0.3"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical|center_horizontal|left" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -177,18 +196,37 @@
                 android:layout_marginTop="3dp"
                 android:textSize="12dp" />
 
-            <TextView
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="0"
-                android:id="@+id/room3_sensor3"
-                android:textAlignment="center"
-                android:layout_weight="0.3"
-                android:gravity="center"
-                android:textSize="13dp"
-                android:textStyle="bold"
-                android:textColor="@color/app_color_font"
-                android:layout_marginBottom="3dp" />
+                android:layout_weight="0.5"
+                android:weightSum="1" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="0"
+                    android:id="@+id/room3_sensor3"
+                    android:textAlignment="center"
+                    android:layout_weight="0.7"
+                    android:gravity="center"
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/app_color_font"
+                    android:layout_marginBottom="3dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="ºC"
+                    android:id="@+id/textView17"
+                    android:textSize="10dp"
+                    android:layout_weight="0.3"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical|center_horizontal|left" />
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 

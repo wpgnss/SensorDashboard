@@ -11,7 +11,7 @@
                 android:topRightRadius="8dp" >
             </corners>
 
-            <solid android:color="#b52774"/>
+            <solid android:color="@color/app_color_4"/>
 
             <padding
                 android:bottom="10dp"

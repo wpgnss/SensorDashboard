@@ -91,6 +91,7 @@ public class Room_1 extends Fragment implements View.OnClickListener{
         mHandler = new Handler();
         once = true;
         Toast.makeText(getActivity().getApplicationContext(), "연결 시도중...", Toast.LENGTH_SHORT).show();
+        // 앱 시작시 TCP 연결 시도
         Connect();
 
         button_power.setOnClickListener(this);
@@ -105,10 +106,15 @@ public class Room_1 extends Fragment implements View.OnClickListener{
             @Override
             public void onFinish()
             {
-                room1_iscon.setImageResource(R.drawable.disconnect);
+                //Message를 수신 후 10초동안 아무런 Message가 없을 때 DisConnect 이미지 출력(실제 소켓과 무관)
+                if(socket != null)
+                    room1_iscon.setImageResource(R.drawable.connect);
+                else
+                    room1_iscon.setImageResource(R.drawable.disconnect);
             }
             @Override
             public void onTick(long millisUntilFinished) {
+                //1초(Tick)마다 수행하는 함수
             }
         };
 
@@ -120,16 +126,17 @@ public class Room_1 extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
 
         switch (v.getId()) {
+            //ON/OFF Button
             case R.id.button_room1_power:
 
                 byte[] temp;
 
                 if(g_recv_status == d_offstatus) {
                     temp = hexStringToByteArray(device_on_msg);
-                    Log.d(TAG,"power button - on");
+                    Log.d(TAG,"power on");
                 } else {
                     temp = hexStringToByteArray(device_off_msg);
-                    Log.d(TAG,"power button - off");
+                    Log.d(TAG,"power off");
                 }
 
                 try {
@@ -139,6 +146,7 @@ public class Room_1 extends Fragment implements View.OnClickListener{
                 }
                 break;
 
+            // Auto Button
             case R.id.button_room1_toggle:
 
                 if( g_auto ) {
@@ -157,6 +165,17 @@ public class Room_1 extends Fragment implements View.OnClickListener{
                     }
                 }
                 break;
+
+/*
+            // Connection Button
+            case R.id.iscon_room1:
+
+                if( socket == null )
+                    Connect();
+                else
+                    Disconnect();
+                break;
+*/
             default:
                 break;
         }
@@ -175,7 +194,7 @@ public class Room_1 extends Fragment implements View.OnClickListener{
 
         } else {
             tb.setBackgroundResource(R.drawable.custom_button_off);
-            tb.setTextColor(Color.parseColor("#b52774"));
+            tb.setTextColor(Color.parseColor("#ABD3B4"));
 
             if(tb == button_power)
                 tb.setText("OFF");
@@ -255,6 +274,9 @@ public class Room_1 extends Fragment implements View.OnClickListener{
                     }
 
                 }
+
+                if(socket != null)
+                    room1_iscon.setImageResource(R.drawable.connect);
             }
         };
 
@@ -304,7 +326,7 @@ public class Room_1 extends Fragment implements View.OnClickListener{
             if( readmsg != null )
             {
                 Log.d(TAG, "showUpdate");
-                room1_iscon.setImageResource(R.drawable.connect);
+                room1_iscon.setImageResource(R.drawable.received);
 
                 int color = 0;
                 int pm25 = ((readmsg[5] & 0xFF) << 8) + ((readmsg[6] & 0xFF) << 0);   // byte -> int

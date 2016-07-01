@@ -2,6 +2,7 @@ package wiznet.novita_app;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -12,11 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 
 public class MainSplash extends Activity {
 
-    private static int SPLASH_TIME_OUT = 2000;
+    private static int SPLASH_TIME_OUT = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         new Handler().postDelayed(new Runnable() {
 
@@ -24,10 +27,9 @@ public class MainSplash extends Activity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                Intent i = new Intent(MainSplash.this, Novita.class);
-                startActivity(i);
+                Intent intent = new Intent(MainSplash.this, Novita.class);
+                startActivity(intent);
 
-                // close this activity
                 finish();
             }
         }, SPLASH_TIME_OUT);

@@ -104,7 +104,10 @@ public class Room_2 extends Fragment implements View.OnClickListener{
             @Override
             public void onFinish() {
 
-                room2_iscon.setImageResource(R.drawable.disconnect);
+                if(socket != null)
+                    room2_iscon.setImageResource(R.drawable.connect);
+                else
+                    room2_iscon.setImageResource(R.drawable.disconnect);
             }
             @Override
             public void onTick(long millisUntilFinished) {
@@ -174,7 +177,7 @@ public class Room_2 extends Fragment implements View.OnClickListener{
 
         } else {
             tb.setBackgroundResource(R.drawable.custom_button_off);
-            tb.setTextColor(Color.parseColor("#b52774"));
+            tb.setTextColor(Color.parseColor("#ABD3B4"));
 
             if(tb == button_power)
                 tb.setText("OFF");
@@ -254,6 +257,8 @@ public class Room_2 extends Fragment implements View.OnClickListener{
                     }
 
                 }
+                if(socket != null)
+                    room2_iscon.setImageResource(R.drawable.connect);
             }
         };
 
@@ -303,7 +308,7 @@ public class Room_2 extends Fragment implements View.OnClickListener{
             if( readmsg != null )
             {
                 Log.d(TAG, "showUpdate");
-                room2_iscon.setImageResource(R.drawable.connect);
+                room2_iscon.setImageResource(R.drawable.received);
 
                 int color = 0;
                 int pm25 = ((readmsg[5] & 0xFF) << 8) + ((readmsg[6] & 0xFF) << 0);   // byte -> int

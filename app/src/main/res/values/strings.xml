@@ -9,4 +9,8 @@
     <string name="title_sensor2">VOC</string>
     <string name="title_sensor3">Temp</string>
 
+
+    <string name="title_powerbutton_on">O N</string>
+    <string name="title_powerbutton_off">OFF</string>
+    <string name="title_autobutton">AUTO</string>
 </resources>
