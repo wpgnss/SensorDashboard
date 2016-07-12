@@ -48,8 +48,8 @@ public class Room_1 extends Fragment implements View.OnClickListener{
     String device_off_msg = "8801010000000000000055";
 
     private Handler autoHandler = null;
-   // private String ip = "192.168.1.101";
-   private String ip = "222.98.173.194";
+    private String ip = "192.168.1.101";
+//    private String ip = "222.98.173.194";
     private int port = 5001;
 
 //    10초동안 데이터 수신이 없을 시 Disconnect로 간주하기 위한 Timer
